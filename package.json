@@ -1,6 +1,6 @@
 {
   "name": "number-translate-bangla",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "any type of english number convert to bangla language",
   "main": "index.js",
   "scripts": {
