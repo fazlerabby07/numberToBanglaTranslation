@@ -1,0 +1,24 @@
+{
+  "name": "number-translate-bangla",
+  "version": "0.0.1",
+  "description": "any type of english number convert to bangla language",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fazlerabby07/numberToBanglaTranslation.git"
+  },
+  "keywords": [
+    "number",
+    "translate",
+    "bangla"
+  ],
+  "author": "fazle rabby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fazlerabby07/numberToBanglaTranslation/issues"
+  },
+  "homepage": "https://github.com/fazlerabby07/numberToBanglaTranslation#readme"
+}

@@ -80,3 +80,4 @@ function convertNumberToWords(amount) {
     }
     return words_string;
 }
+module.exports = convertNumberToWords;
