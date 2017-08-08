@@ -3,6 +3,8 @@ Any number will convert to bangla translation. Ex. '12345' will be 'বার �
 # Install
 $ npm install --save number-translate-bangla
 # Usage
-convertNumberToWords(3484563);  // 'চৌত্রিশ লাখ চুরাশি হাজার পাঁচ শ তেষট্টি'
+var convertToBangla = require('number-translate-bangla');
+var number = convertToBangla(3484563);
+console.log(number); // 'চৌত্রিশ লাখ চুরাশি হাজার পাঁচ শ তেষট্টি'
 # Link
 https://jsbin.com/nozanej/edit?js,output
