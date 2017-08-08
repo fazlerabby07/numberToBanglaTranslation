@@ -1,5 +1,5 @@
 function convertNumberToWords(amount) {
-    var words = ['', 'এক', 'দুই', 'তিন', 'চার', 'পাঁচ', 'ছয়', 'সাত', 'আট', 'নয়', 'দশ', 
+    var Words = ['', 'এক', 'দুই', 'তিন', 'চার', 'পাঁচ', 'ছয়', 'সাত', 'আট', 'নয়', 'দশ', 
                 'এগার', 'বার', 'তের', 'চৌদ্দ', 'পনের', 'ষোল', 'সতের', 'আঠার', 'ঊনিশ', 'বিশ', 
                 'একুশ', 'বাইশ', 'তেইশ', 'চব্বিশ', 'পঁচিশ', 'ছাব্বিশ', 'সাতাশ', 'আঠাশ', 'ঊনত্রিশ', 'ত্রিশ',
                 'একত্রিশ', 'বত্রিশ', 'তেত্রিশ', 'চৌত্রিশ', 'পঁয়ত্রিশ', 'ছত্রিশ', 'সাঁইত্রিশ', 'আটত্রিশ', 'ঊনচল্লিশ', 'চল্লিশ', 
@@ -9,10 +9,29 @@ function convertNumberToWords(amount) {
                 'একাতর', 'বাহাত্তর', 'তিয়াত্তর', 'চুয়াত্তর', 'পঁচাত্তর', 'ছিয়াত্তর', 'সাতাত্তর', 'আটাত্তর', 'ঊনআশি', 'আশি',
                 'একাশি', 'বিরাশি', 'তিরাশি', 'চুরাশি', 'পঁচাশি', 'ছিয়াশি', 'সাতাশি', 'আটাশি', 'ঊননব্বই', 'নব্বই', 
                 'একানব্বই', 'বিরানব্বই', 'তিরানব্বই', 'চুরানব্বই', 'পঁচানব্বই', 'ছিয়ানব্বই', 'সাতানব্বই', 'আটানব্বই', 'নিরানব্বই'];
+
     amount = amount.toString();
     var atemp = amount.split(".");
-    var number = atemp[0].split(",").join("");
-    var n_length = number.length;
+    var before_word = "";
+    var after_word = "";
+    var before_number = atemp[0];
+    if(before_number !== "0") {
+      before_word = toWord(before_number, Words);
+    } 
+    if(atemp.length === 2) {
+        var after_number = atemp[1];
+        after_word = toWord(after_number, Words);
+        if(before_word !== "") {
+          before_word += ' দশমিক '+ after_word;
+        } else {
+            before_word += 'দশমিক '+after_word;
+        }
+    }
+    return before_word;
+}
+
+function toWord(number, words) {
+  var n_length = number.length;
     var words_string = "";
 
     if (n_length <= 9) {
@@ -61,23 +80,24 @@ function convertNumberToWords(amount) {
         for (var i = 0; i < 9; i++) {
             value = n_array[i];      
             if (value != 0) {
-                words_string += words[value] + " ";
+                words_string += words[value] + "";
             }
             if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
-                words_string += "কোটি ";
+                words_string += " কোটি ";
             }
             if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
-                words_string += "লাখ ";
+                words_string += " লাখ ";
             }
             if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
-                words_string += "হাজার ";
+                words_string += " হাজার ";
             } else if (i == 6 && value != 0) {
                 words_string += "শ ";
             }
         }
     
         words_string = words_string.split("  ").join(" ");
+        
     }
-    return words_string;
+  return words_string;
 }
 module.exports = convertNumberToWords;
